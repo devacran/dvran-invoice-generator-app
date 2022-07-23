@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "nanoid": "^4.0.0",
     "next": "12.2.3",
     "react": "18.2.0",

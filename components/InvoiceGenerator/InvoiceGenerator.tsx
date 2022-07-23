@@ -1,5 +1,5 @@
 import React from "react";
-//import InvoiceGenProvider from "./invoiceGenStore";
+import axios from "axios";
 import { useForm, FormProvider } from "react-hook-form";
 
 import InvoiceGenBillSummary from "./components/InvoiceGenBillSummary";
@@ -11,7 +11,9 @@ import InvoiceGenTable from "./components/InvoiceGenTable";
 const InvoiceGenerator = () => {
   const formMethods = useForm();
   const { register } = formMethods;
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    axios.post("/api/invoice-generator", data);
+  };
   return (
     <FormProvider {...formMethods}>
       <>
