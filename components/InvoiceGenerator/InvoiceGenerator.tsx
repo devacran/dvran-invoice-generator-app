@@ -19,45 +19,73 @@ const InvoiceGenerator = () => {
           {/* User info */}
           <InvoiceGenLogo />
           {/* User info */}
-          <InvoiceGenInput config={register("invoicegen-my-company-input")} />
-          <InvoiceGenInput config={register("invoicegen-full-name-input")} />
+          <InvoiceGenInput
+            config={register("invoicegen-my-company-input")}
+            inputProps={{ type: "text" }}
+          />
+          <InvoiceGenInput
+            config={register("invoicegen-full-name-input")}
+            inputProps={{ type: "text" }}
+          />
           <InvoiceGenInput
             config={register("invoicegen-my-company-website-input")}
+            inputProps={{ type: "text" }}
           />
           <InvoiceGenInput
             config={register("invoicegen-my-company-address-input")}
+            inputProps={{ type: "text" }}
           />
           <InvoiceGenInput
             config={register("invoicegen-city-state-zip-input")}
+            inputProps={{ type: "text" }}
           />
-          <InvoiceGenInput config={register("invoicegen-country-input")} />
-          <InvoiceGenInput config={register("invoicegen-phone-input")} />
-          <InvoiceGenInput config={register("invoicegen-email-input")} />
+          <InvoiceGenInput
+            config={register("invoicegen-country-input")}
+            inputProps={{ type: "text" }}
+          />
+          <InvoiceGenInput
+            config={register("invoicegen-phone-input")}
+            inputProps={{ type: "phone" }}
+          />
+          <InvoiceGenInput
+            config={register("invoicegen-email-input")}
+            inputProps={{ type: "email" }}
+          />
 
           {/* Client info*/}
           <InvoiceGenInput
             config={register("invoicegen-client-company-input")}
+            inputProps={{ type: "text" }}
           />
           <InvoiceGenInput
             config={register("invoicegen-client-address-input")}
+            inputProps={{ type: "text" }}
           />
           <InvoiceGenInput
             config={register("invoicegen-client-city-state-zip-input")}
+            inputProps={{ type: "text" }}
           />
 
           {/* Invoice info*/}
           <InvoiceGenInput
             config={register("invoicegen-invoice-number-input")}
+            inputProps={{ type: "number" }}
           />
-          <InvoiceGenInput config={register("invoicegen-invoice-date-input")} />
+          <InvoiceGenInput
+            config={register("invoicegen-invoice-date-input")}
+            inputProps={{ type: "date" }}
+          />
           <InvoiceGenInput
             config={register("invoicegen-invoice-due-date-input")}
+            inputProps={{ type: "date" }}
           />
           <InvoiceGenInput
             config={register("invoicegen-client-city-state-zip-input")}
+            inputProps={{ type: "text" }}
           />
           <InvoiceGenInput
             config={register("invoicegen-client-country-input")}
+            inputProps={{ type: "text" }}
           />
           {/*items table*/}
           <InvoiceGenTable></InvoiceGenTable>
