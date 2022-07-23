@@ -8,21 +8,69 @@ const InvoiceGenBillSummary = () => {
   return (
     <>
       <div>
-        <InvoiceGenInput config={register("sumaru")} />
-        <InvoiceGenInput config={register("sumaru")} />
+        <InvoiceGenInput
+          config={register("invoicegen-subtotal-input")}
+          inputProps={{
+            type: "text",
+            defaultValue: "4",
+          }}
+        />
+        <InvoiceGenInput
+          config={register("invoicegen-tax-input")}
+          inputProps={{
+            type: "text",
+            defaultValue: "4",
+          }}
+        />
       </div>
       <div>
-        <InvoiceGenInput config={register("sumaru")} />
-        <InvoiceGenInput config={register("sumaru")} />
+        <InvoiceGenInput
+          config={register("invoicegen-discount-input")}
+          inputProps={{
+            type: "text",
+            defaultValue: "4",
+          }}
+        />
+        <InvoiceGenInput
+          config={register("invoicegen-total-input")}
+          inputProps={{
+            type: "text",
+            defaultValue: "4",
+          }}
+        />
       </div>
       <div>
-        <InvoiceGenInput config={register("sumaru")} />
-        <InvoiceGenInput config={register("sumaru")} />
+        <InvoiceGenInput
+          config={register("sumaru")}
+          inputProps={{
+            type: "text",
+            defaultValue: "4",
+          }}
+        />
+        <InvoiceGenInput
+          config={register("sumaru")}
+          inputProps={{
+            type: "text",
+            defaultValue: "4",
+          }}
+        />
       </div>
       <hr />
       <div>
-        <InvoiceGenInput config={register("sumaru")} />
-        <InvoiceGenInput config={register("sumaru")} />
+        <InvoiceGenInput
+          config={register("sumaru")}
+          inputProps={{
+            type: "text",
+            defaultValue: "4",
+          }}
+        />
+        <InvoiceGenInput
+          config={register("sumaru")}
+          inputProps={{
+            type: "text",
+            defaultValue: "4",
+          }}
+        />
       </div>
     </>
   );
