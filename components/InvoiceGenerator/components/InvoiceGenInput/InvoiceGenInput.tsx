@@ -4,6 +4,7 @@ import { UseFormRegisterReturn } from "react-hook-form";
 type InvoiceGenInputProps = {
   config: UseFormRegisterReturn;
   inputProps: InputHTMLAttributes<HTMLInputElement>;
+  label?: string;
 };
 type InvoiceGenTextAreaInputProps = {
   config: UseFormRegisterReturn;
@@ -12,18 +13,27 @@ type InvoiceGenTextAreaInputProps = {
 
 const InvoiceGenInput: FC<InvoiceGenInputProps> & {
   TextArea: FC<InvoiceGenTextAreaInputProps>;
-} = ({ config, inputProps }) => {
+} = ({ config, inputProps, label }) => {
   return (
-    <>
-      <input {...config} {...inputProps} />
-    </>
+    <div className="row">
+      {label && (
+        <div className="col-sm-3">
+          <label htmlFor={inputProps.id} className="form-label">
+            {label}
+          </label>
+        </div>
+      )}
+      <div className="col-sm-9">
+        <input className="form-control" {...config} {...inputProps} />
+      </div>
+    </div>
   );
 };
 
 const TextArea: FC<InvoiceGenTextAreaInputProps> = ({ config, inputProps }) => {
   return (
     <>
-      <textarea {...config} {...inputProps} />
+      <textarea className="form-control" {...config} {...inputProps} />
     </>
   );
 };

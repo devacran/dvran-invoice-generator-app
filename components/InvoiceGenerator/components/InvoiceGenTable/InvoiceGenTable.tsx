@@ -12,7 +12,7 @@ const Row = ({ id, removeRow }: RowProps) => {
   const { register } = useFormContext();
   return (
     <tr>
-      <td>
+      <td scope="row">
         <InvoiceGenInput
           inputProps={{
             type: "text",
@@ -20,7 +20,7 @@ const Row = ({ id, removeRow }: RowProps) => {
           config={register(`invoicegen-table.col-${id}.row-1`)}
         />
       </td>
-      <td>
+      <td scope="row">
         <InvoiceGenInput
           inputProps={{
             type: "text",
@@ -28,7 +28,7 @@ const Row = ({ id, removeRow }: RowProps) => {
           config={register(`invoicegen-table.col-${id}.row-2`)}
         />
       </td>
-      <td>
+      <td scope="row">
         <InvoiceGenInput
           inputProps={{
             type: "text",
@@ -36,7 +36,7 @@ const Row = ({ id, removeRow }: RowProps) => {
           config={register(`invoicegen-table.col-${id}.row-3`)}
         />
       </td>
-      <td>
+      <td scope="row" className="position-relative">
         <InvoiceGenInput
           inputProps={{
             type: "text",
@@ -44,11 +44,12 @@ const Row = ({ id, removeRow }: RowProps) => {
           config={register(`invoicegen-table.col-${id}.row-4`)}
         />
         <button
+          className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
           onClick={() => {
             removeRow(id);
           }}
         >
-          X
+          X<span className="visually-hidden">delete row</span>
         </button>
       </td>
     </tr>
@@ -79,10 +80,10 @@ const InvoiceGenTable: FC = () => {
 
   return (
     <>
-      <table>
+      <table className="table">
         <thead>
           <tr>
-            <th>
+            <th scope="col">
               <InvoiceGenInput
                 inputProps={{
                   type: "text",
@@ -92,7 +93,7 @@ const InvoiceGenTable: FC = () => {
                 config={register("invoicegen-table-head.id")}
               />
             </th>
-            <th>
+            <th scope="col">
               <InvoiceGenInput
                 inputProps={{
                   type: "text",
@@ -102,7 +103,7 @@ const InvoiceGenTable: FC = () => {
                 config={register("invoicegen-table-head.desc")}
               />
             </th>
-            <th>
+            <th scope="col">
               <InvoiceGenInput
                 inputProps={{
                   type: "text",
@@ -112,7 +113,7 @@ const InvoiceGenTable: FC = () => {
                 config={register("invoicegen-table-head.qty")}
               />
             </th>
-            <th>
+            <th scope="col">
               <InvoiceGenInput
                 inputProps={{
                   type: "text",
@@ -131,6 +132,7 @@ const InvoiceGenTable: FC = () => {
         </tbody>
       </table>
       <button
+        className="btn btn-info"
         type="button"
         onClick={() => {
           addNewRow();

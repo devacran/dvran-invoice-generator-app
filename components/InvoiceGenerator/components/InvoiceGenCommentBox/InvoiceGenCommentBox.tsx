@@ -11,7 +11,7 @@ const InvoiceGenCommentBox: FC = () => {
         <h3>Comments</h3>
         <InvoiceGenInput.TextArea
           config={register("invoicegen-notes-input")}
-          inputProps={{ type: "text" }}
+          inputProps={{ type: "text", placeholder: "Enter comments here" }}
         />
       </div>
     </>
