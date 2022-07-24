@@ -156,12 +156,19 @@
   dependencies:
     tslib "^2.4.0"
 
+"@types/html-pdf@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/html-pdf/-/html-pdf-3.0.0.tgz#25f402eb143af3e4655a537ff6e0cd4d190f07a1"
+  integrity sha512-YAcS/lAgA4VzY7DrerIYPENFg7QtWa0nEEJhn2fw8o8tlEjVyx37kgaM1tAO7MTI4bNB8Ilaxip1tIjkPsMKtg==
+  dependencies:
+    "@types/node" "*"
+
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz"
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
 
-"@types/node@18.0.6":
+"@types/node@*", "@types/node@18.0.6":
   version "18.0.6"
   resolved "https://registry.npmjs.org/@types/node/-/node-18.0.6.tgz"
   integrity sha512-/xUq6H2aQm261exT6iZTMifUySEt4GR5KX8eYyY+C4MSNPqSh9oNIP7tz2GLKTlFaiBbgZNxffoR3CVRG+cljw==
