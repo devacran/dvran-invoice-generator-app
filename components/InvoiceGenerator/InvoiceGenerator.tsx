@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useForm, FormProvider } from "react-hook-form";
 
@@ -9,10 +9,17 @@ import InvoiceGenLogo from "./components/InvoiceGenLogo";
 import InvoiceGenTable from "./components/InvoiceGenTable";
 
 const InvoiceGenerator = () => {
+  const [downloadUrl, setDownloadUrl] = useState("");
   const formMethods = useForm();
   const { register } = formMethods;
   const onSubmit = (data) => {
-    axios.post("/api/invoice-generator", data);
+    axios
+      .post("/api/invoice-generator", data, { responseType: "arraybuffer" })
+      .then((res) => {
+        const blob = new Blob([res.data], { type: "application/pdf" });
+        const dwnUrl = window.URL.createObjectURL(blob);
+        setDownloadUrl(dwnUrl);
+      });
   };
   return (
     <FormProvider {...formMethods}>
@@ -63,10 +70,6 @@ const InvoiceGenerator = () => {
             config={register("invoicegen-client-address-input")}
             inputProps={{ type: "text" }}
           />
-          <InvoiceGenInput
-            config={register("invoicegen-client-city-state-zip-input")}
-            inputProps={{ type: "text" }}
-          />
 
           {/* Invoice info*/}
           <InvoiceGenInput
@@ -98,6 +101,11 @@ const InvoiceGenerator = () => {
           {/*Submit*/}
           <input type="submit" />
         </form>
+        {downloadUrl && (
+          <a download={"invoice.pdf"} href={downloadUrl}>
+            Download
+          </a>
+        )}
         This invoice was created using the Devcran Invoice Template Generator
       </>
     </FormProvider>

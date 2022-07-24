@@ -9,66 +9,58 @@ const InvoiceGenBillSummary = () => {
     <>
       <div>
         <InvoiceGenInput
-          config={register("invoicegen-subtotal.label-input")}
+          config={register("invoicegen-subtotal-label-input")}
           inputProps={{
             type: "text",
-            defaultValue: "4",
           }}
         />
         <InvoiceGenInput
-          config={register("invoicegen-subtotal.value-input")}
+          config={register("invoicegen-subtotal-value-input")}
           inputProps={{
             type: "text",
-            defaultValue: "4",
-          }}
-        />
-      </div>
-      <div>
-        <InvoiceGenInput
-          config={register("invoicegen-tax.label-input")}
-          inputProps={{
-            type: "text",
-            defaultValue: "4",
-          }}
-        />
-        <InvoiceGenInput
-          config={register("invoicegen-tax.value-input")}
-          inputProps={{
-            type: "text",
-            defaultValue: "4",
           }}
         />
       </div>
       <div>
         <InvoiceGenInput
-          config={register("invoicegen-discount.label-input")}
+          config={register("invoicegen-tax-label-input")}
           inputProps={{
             type: "text",
-            defaultValue: "4",
           }}
         />
         <InvoiceGenInput
-          config={register("invoicegen-discount.value-input")}
+          config={register("invoicegen-tax-value-input")}
           inputProps={{
             type: "text",
-            defaultValue: "4",
+          }}
+        />
+      </div>
+      <div>
+        <InvoiceGenInput
+          config={register("invoicegen-discount-label-input")}
+          inputProps={{
+            type: "text",
+          }}
+        />
+        <InvoiceGenInput
+          config={register("invoicegen-discount-value-input")}
+          inputProps={{
+            type: "text",
           }}
         />
       </div>
       <hr />
       <div>
         <InvoiceGenInput
-          config={register("invoicegen-total.label-input")}
+          config={register("invoicegen-total-label-input")}
           inputProps={{
             type: "text",
-            defaultValue: "4",
           }}
         />
         <InvoiceGenInput
-          config={register("invoicegen-discount.value-input")}
+          config={register("invoicegen-total-value-input")}
           inputProps={{
             type: "text",
-            defaultValue: "4",
           }}
         />
       </div>

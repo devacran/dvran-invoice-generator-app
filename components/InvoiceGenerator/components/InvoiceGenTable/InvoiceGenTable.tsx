@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 import InvoiceGenInput from "../InvoiceGenInput";
 import { nanoid } from "nanoid";
@@ -16,7 +16,6 @@ const Row = ({ id, removeRow }: RowProps) => {
         <InvoiceGenInput
           inputProps={{
             type: "text",
-            defaultValue: "1",
           }}
           config={register(`invoicegen-table.col-${id}.row-1`)}
         />
@@ -25,7 +24,6 @@ const Row = ({ id, removeRow }: RowProps) => {
         <InvoiceGenInput
           inputProps={{
             type: "text",
-            defaultValue: "2",
           }}
           config={register(`invoicegen-table.col-${id}.row-2`)}
         />
@@ -34,7 +32,6 @@ const Row = ({ id, removeRow }: RowProps) => {
         <InvoiceGenInput
           inputProps={{
             type: "text",
-            defaultValue: "3",
           }}
           config={register(`invoicegen-table.col-${id}.row-3`)}
         />
@@ -43,7 +40,6 @@ const Row = ({ id, removeRow }: RowProps) => {
         <InvoiceGenInput
           inputProps={{
             type: "text",
-            defaultValue: "4",
           }}
           config={register(`invoicegen-table.col-${id}.row-4`)}
         />
@@ -60,8 +56,9 @@ const Row = ({ id, removeRow }: RowProps) => {
 };
 
 const InvoiceGenTable: FC = () => {
-  const { register } = useFormContext();
   const [rows, setRows] = React.useState<any[]>([]);
+
+  const { register } = useFormContext();
 
   const addNewRow = () => {
     const newRows = [...rows];
@@ -72,10 +69,13 @@ const InvoiceGenTable: FC = () => {
 
   const removeRow = (id: string) => {
     const newRows = [...rows];
-    console.log(newRows.indexOf(id));
     newRows.splice(newRows.indexOf(id), 1);
     setRows(newRows);
   };
+
+  useEffect(() => {
+    addNewRow();
+  }, []);
 
   return (
     <>
@@ -87,8 +87,9 @@ const InvoiceGenTable: FC = () => {
                 inputProps={{
                   type: "text",
                   placeholder: "ID",
+                  defaultValue: "ID",
                 }}
-                config={register("invoicegen-table-head-1")}
+                config={register("invoicegen-table-head.id")}
               />
             </th>
             <th>
@@ -96,8 +97,9 @@ const InvoiceGenTable: FC = () => {
                 inputProps={{
                   type: "text",
                   placeholder: "DESC",
+                  defaultValue: "DESC",
                 }}
-                config={register("invoicegen-table-head-2")}
+                config={register("invoicegen-table-head.desc")}
               />
             </th>
             <th>
@@ -105,8 +107,9 @@ const InvoiceGenTable: FC = () => {
                 inputProps={{
                   type: "text",
                   placeholder: "qty",
+                  defaultValue: "QTY",
                 }}
-                config={register("invoicegen-table-head-3")}
+                config={register("invoicegen-table-head.qty")}
               />
             </th>
             <th>
@@ -114,8 +117,9 @@ const InvoiceGenTable: FC = () => {
                 inputProps={{
                   type: "text",
                   placeholder: "price",
+                  defaultValue: "PRICE",
                 }}
-                config={register("invoicegen-table-head-4")}
+                config={register("invoicegen-table-head.price")}
               />
             </th>
           </tr>
@@ -127,6 +131,7 @@ const InvoiceGenTable: FC = () => {
         </tbody>
       </table>
       <button
+        type="button"
         onClick={() => {
           addNewRow();
         }}
