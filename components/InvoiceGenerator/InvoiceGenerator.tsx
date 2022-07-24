@@ -10,18 +10,21 @@ import InvoiceGenTable from "./components/InvoiceGenTable";
 
 const InvoiceGenerator = () => {
   const [downloadUrl, setDownloadUrl] = useState("");
+  const [loading, setLoading] = useState(false);
   const formMethods = useForm();
   const {
     register,
     formState: { errors },
   } = formMethods;
   const onSubmit = (data) => {
+    setLoading(true);
     axios
       .post("/api/invoice-generator", data, { responseType: "arraybuffer" })
       .then((res) => {
         const blob = new Blob([res.data], { type: "application/pdf" });
         const dwnUrl = window.URL.createObjectURL(blob);
         setDownloadUrl(dwnUrl);
+        setLoading(false);
       });
   };
   return (
@@ -128,17 +131,25 @@ const InvoiceGenerator = () => {
             </div>
           </div>
           {/*Submit*/}
-          <input className="btn btn-primary" type="submit" />
+          <button className="btn btn-primary" type="submit">
+            Submit
+          </button>
+          {downloadUrl && (
+            <a
+              className="btn btn-warning"
+              download={"invoice.pdf"}
+              href={downloadUrl}
+            >
+              Download PDF
+            </a>
+          )}
+          {loading && (
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          )}
         </form>
-        {downloadUrl && (
-          <a
-            className="btn btn-warning"
-            download={"invoice.pdf"}
-            href={downloadUrl}
-          >
-            Download PDF
-          </a>
-        )}
+
         <footer className="mt-5">
           This invoice was created using the Devcran Invoice Template Generator
         </footer>
