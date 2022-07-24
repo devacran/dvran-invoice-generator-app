@@ -44,6 +44,7 @@ const Row = ({ id, removeRow }: RowProps) => {
           config={register(`invoicegen-table.col-${id}.row-4`)}
         />
         <button
+          type="button"
           className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
           onClick={() => {
             removeRow(id);
@@ -69,6 +70,9 @@ const InvoiceGenTable: FC = () => {
   };
 
   const removeRow = (id: string) => {
+    if (rows.length === 1) {
+      return;
+    }
     const newRows = [...rows];
     newRows.splice(newRows.indexOf(id), 1);
     setRows(newRows);
