@@ -13,6 +13,11 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
+  if (req.method !== "POST") {
+    res.status(405).end("Method not allowed");
+    return;
+  }
+
   const data = req.body;
   const html = InvoiceHtmlTemplateGenerator.generate(data);
   const options: CreateOptions = { format: "Letter" };
