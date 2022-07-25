@@ -23,7 +23,6 @@ export default async function handler(
         resolve(buffer);
       });
     });
-    res.setHeader("Content-Type", "application/pdf");
     res.status(201).send(pdfBuffer);
   } catch (e) {
     res.status(400).json({ error: "an error has occured" });
