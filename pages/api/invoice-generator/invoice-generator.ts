@@ -9,16 +9,23 @@ type Data =
     }
   | Buffer;
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
   const data = req.body;
   const html = InvoiceHtmlTemplateGenerator.generate(data);
   const options: CreateOptions = { format: "Letter" };
-  pdf.create(html.toString(), options).toBuffer(function (err, buffer) {
-    if (err) res.status(400).json({ error: "an error has occureds" });
+  try {
+    const pdfBuffer = await new Promise<Data>((resolve, reject) => {
+      pdf.create(html.toString(), options).toBuffer(function (err, buffer) {
+        if (err) reject();
+        resolve(buffer);
+      });
+    });
     res.setHeader("Content-Type", "application/pdf");
-    res.status(201).send(buffer);
-  });
+    res.status(201).send(pdfBuffer);
+  } catch (e) {
+    res.status(400).json({ error: "an error has occured" });
+  }
 }
