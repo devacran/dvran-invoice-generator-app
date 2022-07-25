@@ -5,7 +5,7 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: "/invoice-generator",
+        source: "/api/invoice-generator",
         headers: [
           {
             key: "Content-Type",
