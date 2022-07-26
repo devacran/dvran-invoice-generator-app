@@ -1,5 +1,6 @@
 export interface InterfaceInvoiceData {
   "invoicegen-my-company-input": string;
+  invoicegen_my_company_input2: string;
   "invoicegen-full-name-input": string;
   "invoicegen-my-company-website-input": string;
   "invoicegen-my-company-address-input": string;

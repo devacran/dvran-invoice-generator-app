@@ -20,7 +20,15 @@ const InvoiceGenerator = () => {
   const onSubmit = (data: InterfaceInvoiceData) => {
     setLoading(true);
     axios
-      .post("/api/invoice-generator", data, { responseType: "arraybuffer" })
+      .post(
+        "/api/invoice-generator",
+        {
+          prueba: "loco",
+          "invoicegen-table": "aver",
+          "invoicegen-table-head": "aver2",
+        },
+        { responseType: "arraybuffer" }
+      )
       .then((res) => {
         const blob = new Blob([res.data], { type: "application/pdf" });
         const dwnUrl = window.URL.createObjectURL(blob);
@@ -42,6 +50,13 @@ const InvoiceGenerator = () => {
                 inputProps={{
                   type: "text",
                   placeholder: "Your Company",
+                }}
+              />
+              <InvoiceGenInput
+                config={register("invoicegen_my_company_input2")}
+                inputProps={{
+                  type: "text",
+                  placeholder: "Your Company2",
                 }}
               />
               <InvoiceGenInput

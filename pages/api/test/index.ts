@@ -14,23 +14,14 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  if (req.method !== "POST") {
-    res.status(405).end("Method not allowed");
-    return;
-  }
-
   try {
-    const data = JSON.stringify(req.body);
-
-    const html = InvoiceHtmlTemplateGenerator.generate(JSON.parse(data));
-    const options: CreateOptions = { format: "Letter" };
-    const pdfBuffer = await new Promise<Data>((resolve, reject) => {
-      pdf.create(html.toString(), options).toBuffer(function (err, buffer) {
-        if (err) reject();
-        resolve(buffer);
-      });
-    });
-    res.status(201).send(pdfBuffer);
+    console.log(req.body);
+    const prueba = req.body["prueba"];
+    const prueba2 = req.body["invoicegen-table"];
+    const prueba3 = req.body["invoicegen-table-head"];
+    console.log(prueba, prueba2, prueba3);
+    req.body.hasOwnProperty("0") ? console.log("si") : console.log("no");
+    res.status(201).json({ msg: "ok", error: "ninguno" });
   } catch (e) {
     res.status(400).json({ msg: "an error has occured", error: e as string });
   }

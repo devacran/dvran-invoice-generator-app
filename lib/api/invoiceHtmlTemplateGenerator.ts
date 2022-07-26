@@ -30,15 +30,31 @@ function InvoiceHtmlTemplateGenerator(): InvoiceHtmlTemplateGenerator {
     });
   };
 
-  const createTable = (invoiceData: InterfaceInvoiceData) => {
-    const tableItems = invoiceData["invoicegen-table"];
-    const tableHead = invoiceData["invoicegen-table-head"];
+  const createTable = (invoiceData: any) => {
+    console.log(
+      "🚀 ~ file: invoiceHtmlTemplateGenerator.ts ~ line 34 ~ createTable ~ invoiceData",
+      invoiceData
+    );
 
-    Object.values(tableItems).forEach(createTableRow);
+    const tableItems = invoiceData["invoicegen-table"];
+    console.log(
+      "🚀 ~ file: invoiceHtmlTemplateGenerator.ts ~ line 37 ~ createTable ~ tableItems",
+      tableItems
+    );
+    const tableHead = invoiceData["invoicegen-table-head"];
+    console.log(
+      "🚀 ~ file: invoiceHtmlTemplateGenerator.ts ~ line 39 ~ createTable ~ tableHead",
+      tableHead
+    );
+    const prueba = invoiceData["prueba"];
+    //Object.values(tableItems).forEach(createTableRow);
     createTableHeader(tableHead);
     template
       .getElementById("invoicegen-my-company-input")
       .setAttribute("value", invoiceData["invoicegen-my-company-input"]);
+    template
+      .getElementById("invoicegen_my_company_input2")
+      .setAttribute("value", invoiceData["invoicegen_my_company_input2"]);
     template
       .getElementById("invoicegen-full-name-input")
       .setAttribute("value", invoiceData["invoicegen-full-name-input"]);
