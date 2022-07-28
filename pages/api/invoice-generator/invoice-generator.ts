@@ -17,19 +17,22 @@ export default async function handler(
     res.status(405).end("Method not allowed");
     return;
   }
+  console.log(req.body);
+  const data = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
 
-  const data = req.body;
+  console.log("data", data, typeof data);
   const html = InvoiceHtmlTemplateGenerator.generate(data);
   const options: CreateOptions = { format: "Letter" };
   try {
     const pdfBuffer = await new Promise<Data>((resolve, reject) => {
       pdf.create(html.toString(), options).toBuffer(function (err, buffer) {
-        if (err) reject();
+        if (err) reject(err);
         resolve(buffer);
       });
     });
     res.status(201).send(pdfBuffer);
   } catch (e) {
+    console.log(e);
     res.status(400).json({ error: "an error has occured" });
   }
 }

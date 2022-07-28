@@ -32,7 +32,15 @@ function InvoiceHtmlTemplateGenerator(): InvoiceHtmlTemplateGenerator {
 
   const createTable = (invoiceData: InterfaceInvoiceData) => {
     const tableItems = invoiceData["invoicegen-table"];
+    console.log(
+      "🚀 ~ file: invoiceHtmlTemplateGenerator.ts ~ line 35 ~ createTable ~ tableItems",
+      tableItems
+    );
     const tableHead = invoiceData["invoicegen-table-head"];
+    console.log(
+      "🚀 ~ file: invoiceHtmlTemplateGenerator.ts ~ line 37 ~ createTable ~ tableHead",
+      tableHead
+    );
 
     Object.values(tableItems).forEach(createTableRow);
     createTableHeader(tableHead);
