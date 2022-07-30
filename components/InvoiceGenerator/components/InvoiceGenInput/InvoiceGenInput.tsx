@@ -1,10 +1,12 @@
 import React, { FC, InputHTMLAttributes } from "react";
-import { UseFormRegisterReturn } from "react-hook-form";
+import { FieldErrorsImpl, UseFormRegisterReturn } from "react-hook-form";
+import { InterfaceInvoiceData } from "../../../../pages/api/invoice-generator";
 
 type InvoiceGenInputProps = {
   config: UseFormRegisterReturn;
   inputProps: InputHTMLAttributes<HTMLInputElement>;
   label?: string;
+  hasError?: boolean;
 };
 type InvoiceGenTextAreaInputProps = {
   config: UseFormRegisterReturn;
@@ -13,7 +15,7 @@ type InvoiceGenTextAreaInputProps = {
 
 const InvoiceGenInput: FC<InvoiceGenInputProps> & {
   TextArea: FC<InvoiceGenTextAreaInputProps>;
-} = ({ config, inputProps, label }) => {
+} = ({ config, inputProps, label, hasError }) => {
   return (
     <div className="row">
       {label && (
@@ -24,7 +26,11 @@ const InvoiceGenInput: FC<InvoiceGenInputProps> & {
         </div>
       )}
       <div className="col-sm-9">
-        <input className="form-control" {...config} {...inputProps} />
+        <input
+          className={`form-control ${hasError ? "is-invalid" : ""}`}
+          {...config}
+          {...inputProps}
+        />
       </div>
     </div>
   );

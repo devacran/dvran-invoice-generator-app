@@ -38,38 +38,66 @@ const InvoiceGenerator = () => {
               {/* User info */}
 
               <InvoiceGenInput
-                config={register("invoicegen-my-company-input")}
+                hasError={Boolean(errors["invoicegen-my-company-input"])}
+                config={register("invoicegen-my-company-input", {
+                  required: true,
+                })}
                 inputProps={{
                   type: "text",
                   placeholder: "Your Company",
                 }}
               />
               <InvoiceGenInput
-                config={register("invoicegen-full-name-input")}
+                hasError={Boolean(errors["invoicegen-full-name-input"])}
+                config={register("invoicegen-full-name-input", {
+                  required: true,
+                })}
                 inputProps={{ type: "text", placeholder: "Full Name" }}
               />
               <InvoiceGenInput
-                config={register("invoicegen-my-company-website-input")}
+                hasError={Boolean(
+                  errors["invoicegen-my-company-website-input"]
+                )}
+                config={register("invoicegen-my-company-website-input", {
+                  required: true,
+                })}
                 inputProps={{ type: "text", placeholder: "Website" }}
               />
               <InvoiceGenInput
-                config={register("invoicegen-my-company-address-input")}
+                hasError={Boolean(
+                  errors["invoicegen-my-company-address-input"]
+                )}
+                config={register("invoicegen-my-company-address-input", {
+                  required: true,
+                })}
                 inputProps={{ type: "text", placeholder: "Address" }}
               />
               <InvoiceGenInput
-                config={register("invoicegen-city-state-zip-input")}
+                hasError={Boolean(errors["invoicegen-city-state-zip-input"])}
+                config={register("invoicegen-city-state-zip-input", {
+                  required: true,
+                })}
                 inputProps={{ type: "text", placeholder: "City, State, Zip" }}
               />
               <InvoiceGenInput
-                config={register("invoicegen-country-input")}
+                hasError={Boolean(errors["invoicegen-country-input"])}
+                config={register("invoicegen-country-input", {
+                  required: true,
+                })}
                 inputProps={{ type: "text", placeholder: "Country" }}
               />
               <InvoiceGenInput
-                config={register("invoicegen-phone-input")}
+                hasError={Boolean(errors["invoicegen-phone-input"])}
+                config={register("invoicegen-phone-input", {
+                  required: true,
+                })}
                 inputProps={{ type: "phone", placeholder: "Phone" }}
               />
               <InvoiceGenInput
-                config={register("invoicegen-email-input")}
+                hasError={Boolean(errors["invoicegen-email-input"])}
+                config={register("invoicegen-email-input", {
+                  required: true,
+                })}
                 inputProps={{ type: "email", placeholder: "Email" }}
               />
             </div>
@@ -82,19 +110,33 @@ const InvoiceGenerator = () => {
             <div className="col">
               {/* Client info*/}
               <InvoiceGenInput
-                config={register("invoicegen-client-company-input")}
+                hasError={Boolean(errors["invoicegen-client-company-input"])}
+                config={register("invoicegen-client-company-input", {
+                  required: true,
+                })}
                 inputProps={{ type: "text", placeholder: "Client Company" }}
               />
               <InvoiceGenInput
-                config={register("invoicegen-client-address-input")}
+                hasError={Boolean(errors["invoicegen-client-address-input"])}
+                config={register("invoicegen-client-address-input", {
+                  required: true,
+                })}
                 inputProps={{ type: "text", placeholder: "Address" }}
               />
               <InvoiceGenInput
-                config={register("invoicegen-client-city-state-zip-input")}
+                hasError={Boolean(
+                  errors["invoicegen-client-city-state-zip-input"]
+                )}
+                config={register("invoicegen-client-city-state-zip-input", {
+                  required: true,
+                })}
                 inputProps={{ type: "text", placeholder: "City, State, Zip" }}
               />
               <InvoiceGenInput
-                config={register("invoicegen-client-country-input")}
+                hasError={Boolean(errors["invoicegen-client-country-input"])}
+                config={register("invoicegen-client-country-input", {
+                  required: true,
+                })}
                 inputProps={{ type: "text", placeholder: "Country" }}
               />
             </div>
@@ -102,17 +144,28 @@ const InvoiceGenerator = () => {
               <div className="row">
                 {/* Invoice info*/}
                 <InvoiceGenInput
-                  config={register("invoicegen-invoice-number-input")}
+                  hasError={Boolean(errors["invoicegen-invoice-number-input"])}
+                  config={register("invoicegen-invoice-number-input", {
+                    required: true,
+                  })}
                   inputProps={{ type: "number", placeholder: "Invoice Number" }}
                   label="Invoice Number"
                 />
                 <InvoiceGenInput
-                  config={register("invoicegen-invoice-date-input")}
+                  hasError={Boolean(errors["invoicegen-invoice-date-input"])}
+                  config={register("invoicegen-invoice-date-input", {
+                    required: true,
+                  })}
                   inputProps={{ type: "date", placeholder: "Invoice Date" }}
                   label="Invoice Date"
                 />
                 <InvoiceGenInput
-                  config={register("invoicegen-invoice-due-date-input")}
+                  hasError={Boolean(
+                    errors["invoicegen-invoice-due-date-input"]
+                  )}
+                  config={register("invoicegen-invoice-due-date-input", {
+                    required: true,
+                  })}
                   inputProps={{ type: "date", placeholder: "Due Date" }}
                   label="Due Date"
                 />

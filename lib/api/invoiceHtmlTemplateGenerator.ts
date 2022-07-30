@@ -73,6 +73,12 @@ function InvoiceHtmlTemplateGenerator(): InvoiceHtmlTemplateGenerator {
       .getElementById("invoicegen-client-address-input")
       .setAttribute("value", invoiceData["invoicegen-client-address-input"]);
     template
+      .getElementById("invoicegen-client-city-state-zip-input")
+      .setAttribute(
+        "value",
+        invoiceData["invoicegen-client-city-state-zip-input"]
+      );
+    template
       .getElementById("invoicegen-invoice-number-input")
       .setAttribute("value", invoiceData["invoicegen-invoice-number-input"]);
     template
