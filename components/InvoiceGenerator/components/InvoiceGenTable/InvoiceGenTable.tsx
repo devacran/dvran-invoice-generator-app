@@ -2,6 +2,7 @@ import React, { FC, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 import InvoiceGenInput from "../InvoiceGenInput";
 import { nanoid } from "nanoid";
+import { InterfaceInvoiceData } from "../../../../pages/api/invoice-generator";
 
 type RowProps = {
   id: string;
@@ -9,39 +10,62 @@ type RowProps = {
 };
 
 const Row = ({ id, removeRow }: RowProps) => {
-  const { register } = useFormContext();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<InterfaceInvoiceData>();
   return (
     <tr>
       <td scope="row">
         <InvoiceGenInput
+          hasError={Boolean(
+            errors[`invoicegen-table`]?.[`row-${id}`]?.[`col-1`]
+          )}
           inputProps={{
             type: "text",
           }}
-          config={register(`invoicegen-table.col-${id}.row-1`)}
+          config={register(`invoicegen-table.row-${id}.col-1`, {
+            required: true,
+          })}
         />
       </td>
       <td scope="row">
         <InvoiceGenInput
+          hasError={Boolean(
+            errors[`invoicegen-table`]?.[`row-${id}`]?.[`col-2`]
+          )}
           inputProps={{
             type: "text",
           }}
-          config={register(`invoicegen-table.col-${id}.row-2`)}
+          config={register(`invoicegen-table.row-${id}.col-2`, {
+            required: true,
+          })}
         />
       </td>
       <td scope="row">
         <InvoiceGenInput
+          hasError={Boolean(
+            errors[`invoicegen-table`]?.[`row-${id}`]?.[`col-3`]
+          )}
           inputProps={{
             type: "text",
           }}
-          config={register(`invoicegen-table.col-${id}.row-3`)}
+          config={register(`invoicegen-table.row-${id}.col-3`, {
+            required: true,
+          })}
         />
       </td>
       <td scope="row" className="position-relative">
         <InvoiceGenInput
+          hasError={Boolean(
+            errors[`invoicegen-table`]?.[`row-${id}`]?.[`col-4`]
+          )}
           inputProps={{
             type: "text",
           }}
-          config={register(`invoicegen-table.col-${id}.row-4`)}
+          config={register(`invoicegen-table.row-${id}.col-4`, {
+            required: true,
+          })}
         />
         <button
           type="button"
@@ -59,8 +83,10 @@ const Row = ({ id, removeRow }: RowProps) => {
 
 const InvoiceGenTable: FC = () => {
   const [rows, setRows] = React.useState<any[]>([]);
-
-  const { register } = useFormContext();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
 
   const addNewRow = () => {
     const newRows = [...rows];
@@ -89,42 +115,54 @@ const InvoiceGenTable: FC = () => {
           <tr>
             <th scope="col">
               <InvoiceGenInput
+                hasError={Boolean(errors["invoicegen-table-head"]?.id)}
                 inputProps={{
                   type: "text",
                   placeholder: "ID",
                   defaultValue: "ID",
                 }}
-                config={register("invoicegen-table-head.id")}
+                config={register("invoicegen-table-head.id", {
+                  required: true,
+                })}
               />
             </th>
             <th scope="col">
               <InvoiceGenInput
+                hasError={Boolean(errors["invoicegen-table-head"]?.desc)}
                 inputProps={{
                   type: "text",
                   placeholder: "DESC",
                   defaultValue: "DESC",
                 }}
-                config={register("invoicegen-table-head.desc")}
+                config={register("invoicegen-table-head.desc", {
+                  required: true,
+                })}
               />
             </th>
             <th scope="col">
               <InvoiceGenInput
+                hasError={Boolean(errors["invoicegen-table-head"]?.qty)}
                 inputProps={{
                   type: "text",
                   placeholder: "qty",
                   defaultValue: "QTY",
                 }}
-                config={register("invoicegen-table-head.qty")}
+                config={register("invoicegen-table-head.qty", {
+                  required: true,
+                })}
               />
             </th>
             <th scope="col">
               <InvoiceGenInput
+                hasError={Boolean(errors["invoicegen-table-head"]?.price)}
                 inputProps={{
                   type: "text",
                   placeholder: "price",
                   defaultValue: "PRICE",
                 }}
-                config={register("invoicegen-table-head.price")}
+                config={register("invoicegen-table-head.price", {
+                  required: true,
+                })}
               />
             </th>
           </tr>
